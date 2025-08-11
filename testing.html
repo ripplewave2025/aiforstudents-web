@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glowing Carousel: Gradient Text & Popups in Motion</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Roboto", sans-serif;
+            letter-spacing: 0.4px;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: radial-gradient(circle at top left, #1f1c2c, #928dab);
+            background-color: #0a0f2c;
+            background-image: radial-gradient(
+                circle at 20% 30%,
+                rgba(0, 255, 255, 0.05) 0%,
+                transparent 70%
+            ),
+            radial-gradient(
+                circle at 80% 70%,
+                rgba(255, 0, 150, 0.04) 0%,
+                transparent 70%
+            ),
+            url("https://www.transparenttextures.com/patterns/dark-mosaic.png"); /* ruis */
+            background-repeat: repeat;
+            background-size: cover;
+            color: #fff;
+            height: 100vh;
+            overflow-x: hidden;
+        }
+
+        h2 {
+            font-weight: 500;
+            font-size: 16px;
+            margin: 0;
+            background: linear-gradient(185deg, #0281e2, #f4f3f5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h3 {
+            font-weight: 500;
+            font-size: 16px;
+            margin: 0;
+            background: linear-gradient(90deg, #ff05f2, #f7d9f5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .scene {
+            perspective: 1200px;
+            width: 80%;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform-style: preserve-3d;
+            transition: transform 1s;
+        }
+
+        .card {
+            position: absolute;
+            width: 180px;
+            height: 240px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, z-index 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+            cursor: pointer;
+            transform-origin: center center;
+            animation-name: glow;
+            animation-duration: 1.3s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .card img:hover {
+            animation: scale-up 0.5s ease forwards;
+        }
+
+        @keyframes scale-up {
+            to {
+                transform: scale(1.3);
+            }
+        }
+
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 5px #2980b9;
+            }
+            50% {
+                box-shadow: 0 0 10px #cc0590;
+            }
+            100% {
+                box-shadow: 0 0 15px #2980b9;
+            }
+        }
+
+        .card h3 {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            background-color: #121313;
+            padding: 2rem;
+            width: 80%;
+            max-width: 400px;
+            border-radius: 15px;
+            border: 1px solid #44abf0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .popup.show {
+            display: block;
+            opacity: 1;
+        }
+
+        .popup h2 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .popup p {
+            font-size: 16px;
+            margin-top: 10px;
+            color: #ddd;
+        }
+
+        .popup-close {
+            background-color: #f007dc;
+            border: none;
+            font-size: 15px;
+            font-weight: bold;
+            padding: 10px;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        .popup-close:hover {
+            background-color: #fa79ef;
+        }
+
+        /* about page */
+
+        .about-inner {
+            display: grid;
+            width: 100%;
+            background-color: #080808;
+            border-radius: 15px;
+        }
+
+        .about-flex {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .about-flex img {
+            margin-bottom: 1rem;
+            width: 100%;
+            border-radius: 15px;
+        }
+
+        /* Service page */
+
+        .services {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            width: 100%;
+            height: 180px;
+            padding: 6px 12px;
+            background-image: url("https://iili.io/3QhBJ7p.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: 15px;
+        }
+
+        .services-content,
+        ul,
+        li {
+            margin-top: 2rem;
+            color: #fff;
+        }
+
+        .services img {
+            width: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        ul.groene-vinkjes {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        ul.groene-vinkjes li::before {
+            content: "✔️";
+            color: green !important;
+            margin-right: 8px;
+        }
+
+        /* Projecs page */
+
+        .projects,
+        ul,
+        li {
+            margin-top: 4px;
+            color: #fff;
+        }
+        .projects,
+        ul {
+            list-style-type: none;
+            margin-top: 1rem;
+            padding-left: 0;
+        }
+
+        .projects {
+            margin-top: 1rem;
+            max-width: 400px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 5px;
+            color: #fff;
+        }
+
+        .projects img {
+            width: 100%;
+            height: 234px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        a {
+            font-size: 13px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .project-caption {
+            font-size: 0.75rem;
+            margin-top: 4px;
+            color: #555;
+            line-height: 1.2;
+        }
+
+        /* contact form */
+        #contact-form {
+            max-width: 500px;
+            color: rgb(243, 247, 250);
+            background-color: #050505;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #contact-form label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        #contact-form input,
+        #contact-form textarea {
+            width: 100%;
+            height: 40px;
+            margin-bottom: 5px;
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #contact-form input[type="submit"] {
+            background-color: #048cdb;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #contact-form input[type="submit"]:hover {
+            background-color: #44abf0;
+        }
+
+        .touch {
+            font-weight: 500;
+        }
+
+        .work {
+            margin-top: 2rem;
+            display: grid;
+            align-items: center;
+            max-width: 400px;
+            text-align: left;
+            color: #fff;
+        }
+
+        strong {
+            color: #f007dc;
+        }
+
+        figcaption {
+            text-align: center;
+            padding: 5px;
+        }
+
+        @media (max-width: 1024px) {
+            .scene {
+                width: 100%;
+                height: 340px;
+            }
+
+            .card {
+                width: 140px;
+                height: 190px;
+            }
+
+            .card h3 {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .scene {
+                height: 300px;
+            }
+
+            .carousel {
+                transform: scale(0.9); /* iets kleiner geheel */
+            }
+
+            .card {
+                width: 120px;
+                height: 160px;
+                margin: 0; /* voorkom extra ruimte */
+            }
+
+            .card h3 {
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .scene {
+                height: 270px;
+            }
+
+            .carousel {
+                transform: scale(0.8);
+            }
+
+            .card {
+                width: 100px;
+                height: 140px;
+            }
+
+            .card h3 {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .scene {
+                height: 250px;
+            }
+
+            .carousel {
+                transform: scale(0.75);
+            }
+
+            .card {
+                width: 90px;
+                height: 130px;
+            }
+
+            .card h3 {
+                font-size: 11px;
+            }
+
+            .popup {
+                width: 95%;
+                padding: 1rem;
+            }
+
+            .about-flex {
+                flex-direction: column;
+            }
+
+            .projects {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .projects img {
+                height: auto;
+            }
+
+            #contact-form {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="scene">
+        <div class="carousel" id="carousel">
+            <div class="card" id="card1" data-id="card1">
+                <img src="https://iili.io/3QhqLmP.jpg" alt="About">
+                <h3>About</h3>
+            </div>
+            <div class="card" id="card2" data-id="card2">
+                <img src="https://iili.io/3Qhqi7V.jpg" alt="Services">
+                <h3>Services</h3>
+            </div>
+            <div class="card" id="card3" data-id="card3">
+                <img src="https://iili.io/3QhqskB.jpg" alt="Projects">
+                <h3>Projects</h3>
+            </div>
+            <div class="card" id="card4" data-id="card4">
+                <img src="https://iili.io/3QhqthF.jpg" alt="References">
+                <h3>Work</h3>
+            </div>
+            <div class="card" id="card5" data-id="card5">
+                <img src="https://iili.io/3Qhqyrv.jpg" alt="Contact">
+                <h3>Contact</h3>
+            </div>
+        </div>
+    </div>
+
+    <div id="popup-card1" class="popup">
+        <div class="about-inner">
+            <h2>About</h2>
+            <div class="about-flex">
+                <div class="about-left"><img src="https://iili.io/3QhBH2R.jpg" alt="About"></div>
+                <div class="about-right">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Deleniti neque voluptatem sapiente ex harum eum in repudiandae,
+                </div>
+            </div>
+        </div>
+        <button class="popup-close" onclick="closePopup()">Close</button>
+    </div>
+
+    <div id="popup-card2" class="popup">
+        <h2>Services</h2>
+        <div class="services"></div>
+        <div class="services-content">
+            <ul class="groene-vinkjes">
+                <li>website/App development</li>
+                <li>eCommerce services</li>
+                <li>SEO optimalisation</li>
+                <li>Social media marketing</li>
+            </ul>
+        </div>
+        <button class="popup-close" onclick="closePopup()">Close</button>
+    </div>
+
+    <div id="popup-card3" class="popup">
+        <h2>Projects</h2>
+        <h4>SEO solutions</h4>
+        <div class="projects">
+            <div><img class="pro" src="https://iili.io/3QhqmBa.jpg" alt="Projects">
+                <ul>
+                    <li>Project: App and Website</li>
+                    <li>Subject: SEO</li>
+                    <li>Name: SEO solutions</li>
+                </ul>
+                <p>
+                    <a href="#">www.seosolutions.com</a> 
+                    <br>
+                    <a href="#">Google play store</a> 
+                    <br>
+                    <a href="#">Apple store</a>
+                </p>
+            </div>
+            <p class="link"><a href="#">more projects >></a></p>
+        </div>
+        <button class="popup-close" onclick="closePopup()">Close</button>
+    </div>
+
+    <div id="popup-card4" class="popup">
+        <h2>Top references</h2>
+        <div class="work health">
+            <p><strong>Stay-Healthy</strong> is an app that provides access to a wide range of health resources.</p>
+        </div>
+        <div class="work business">
+            <p><strong>Compa</strong> is a website that provides access to a wide range of business resources.</p>
+        </div>
+        <div class="work ecomm">
+            <p><strong>eComm</strong> is a online store for high-end technology products for professionals.</p>
+        </div>
+        <div class="work fitness">
+            <p><strong>Fit</strong> is a website that provides access to a wide range of fitness resources.</p>
+        </div>
+        <button class="popup-close" onclick="closePopup()">Close</button>
+    </div>
+
+    <div id="popup-card5" class="popup">
+        <h2>Contact</h2>
+        <h4 class="touch">Get in touch with us</h4>
+        <!--contact form -->
+        <form id="contact-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name"><br><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email"><br><br>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message"></textarea><br><br>
+            <input type="submit" value="Send">
+        </form>
+        <button class="popup-close" onclick="closePopup()">Close</button>
+    </div>
+
+    <script>
+        const carousel = document.getElementById("carousel");
+        const cards = carousel.querySelectorAll(".card");
+        let currentCardIndex = 0;
+        const totalCards = cards.length;
+        let rotationInterval = null;
+        let isPopupOpen = false;
+
+        // Dynamische stappen en afstand op basis van scherm
+        function getResponsiveSettings() {
+            const width = window.innerWidth;
+
+            if (width <= 400) return { rotationStep: 45, radius: 160 }; // Zeer compact
+            if (width <= 600) return { rotationStep: 50, radius: 200 }; // Mobiel
+            if (width <= 768) return { rotationStep: 60, radius: 260 }; // Tablet
+            return { rotationStep: 72, radius: 350 }; // Desktop
+        }
+
+        function setCardPositions() {
+            const { rotationStep, radius } = getResponsiveSettings();
+            cards.forEach((card, i) => {
+                const rotateY = i * rotationStep;
+                const angleRad = (rotateY * Math.PI) / 180;
+                const x = Math.sin(angleRad) * radius;
+                const z = Math.cos(angleRad) * radius;
+                card.style.transform = `translateX(${x}px) translateZ(${z}px) rotateY(${rotateY}deg)`;
+            });
+            rotateCarousel(); // herbereken rotatiehoek bij aanpassing
+            updateCardSize();
+        }
+
+        function updateCardSize() {
+            cards.forEach((card, i) => {
+                if (i === currentCardIndex) {
+                    card.style.transform += " scale(1.2)";
+                    card.style.zIndex = "1";
+                } else {
+                    card.style.transform = card.style.transform.replace(" scale(1.2)", "");
+                    card.style.zIndex = "0";
+                }
+            });
+        }
+
+        function rotateCarousel() {
+            const { rotationStep } = getResponsiveSettings();
+            const rotateDeg = -rotationStep * currentCardIndex;
+            carousel.style.transform = `rotateY(${rotateDeg}deg)`;
+        }
+
+        function startRotation() {
+            if (rotationInterval || isPopupOpen) return;
+            rotationInterval = setInterval(() => {
+                currentCardIndex = (currentCardIndex + 1) % totalCards;
+                setCardPositions();
+            }, 1400);
+        }
+
+        function stopRotation() {
+            if (rotationInterval) {
+                clearInterval(rotationInterval);
+                rotationInterval = null;
+            }
+        }
+
+        carousel.addEventListener("mouseover", () => {
+            if (!isPopupOpen) stopRotation();
+        });
+
+        carousel.addEventListener("mouseout", () => {
+            if (!isPopupOpen) startRotation();
+        });
+
+        carousel.addEventListener("touchstart", () => {
+            if (!isPopupOpen) stopRotation();
+        });
+
+        carousel.addEventListener("touchend", () => {
+            if (!isPopupOpen) startRotation();
+        });
+
+        function showPopup(cardId) {
+            const popup = document.getElementById(`popup-${cardId}`);
+            if (popup) {
+                popup.classList.add("show");
+                isPopupOpen = true;
+                stopRotation();
+            }
+        }
+
+        function closePopup() {
+            document.querySelectorAll(".popup").forEach((popup) => {
+                popup.classList.remove("show");
+            });
+            isPopupOpen = false;
+            startRotation();
+        }
+
+        cards.forEach((card) => {
+            card.addEventListener("click", () => {
+                const cardId = card.dataset.id;
+                showPopup(cardId);
+            });
+        });
+
+        // Init + resize support
+        setCardPositions();
+        startRotation();
+
+        window.addEventListener("resize", () => {
+            setCardPositions(); // opnieuw positioneren bij vensterverandering
+        });
+    </script>
+</body>
+</html>

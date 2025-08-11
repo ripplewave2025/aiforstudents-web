@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Future Architect | AI & Beyond</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: radial-gradient(circle at 30% 40%, #1a1a1a, #000000 90%);
+      color: #e5e7eb;
+      font-family: 'Inter', sans-serif;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .shine-text {
+      background: linear-gradient(90deg, #e0e0ff, #bdb4ff, #ffffff);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: shimmer 6s infinite linear;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -500px 0; }
+      100% { background-position: 500px 0; }
+    }
+
+    .hover-glow:hover {
+      box-shadow: 0 0 15px #a855f7, 0 0 25px #8b5cf6;
+      transition: all 0.3s ease;
+    }
+  </style>
+</head>
+<body class="relative flex flex-col justify-center items-center text-center">
+  <div class="absolute top-4 left-6 text-sm text-white opacity-70">Upesh</div>
+  <div class="absolute top-4 right-6 space-x-4">
+    <a href="#talks" class="text-white text-sm">Speaking</a>
+    <a href="#contact" class="border border-white rounded-full px-4 py-1 text-sm hover-glow">Contact</a>
+  </div>
+
+  <div class="z-10 px-6">
+    <p class="text-sm text-white/80 mb-2">I’m a</p>
+    <h1 class="text-6xl md:text-8xl font-bold shine-text">Technologist & Storyteller</h1>
+    <p class="mt-4 text-white/80 text-lg max-w-xl mx-auto">
+      Building the impossible in public. I experiment with AI, automation, and emotion at the edge of execution.
+    </p>
+    <p class="mt-2 text-purple-300 text-md italic">Curious about the ethics, chaos & beauty of intelligent systems.</p>
+  </div>
+
+  <div class="absolute bottom-0 w-full h-32 bg-gradient-to-t from-black to-transparent"></div>
+</body>
+</html>

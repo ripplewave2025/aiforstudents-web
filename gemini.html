@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Name – AI-Powered Personal Brand</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-[#FDFBF8] text-[#333333] antialiased">
+
+  <!-- NAV -->
+  <header class="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-gray-200">
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold">Your Name</h1>
+      <div class="hidden md:flex space-x-8">
+        <!-- group/after underline trick -->
+        <a href="#about" class="relative group text-gray-600 hover:text-gray-900 transition">
+          About
+          <span class="absolute left-1/2 -bottom-1 h-[2px] w-0 bg-amber-500 group-hover:w-full transition-all"></span>
+        </a>
+        <a href="#portfolio" class="relative group text-gray-600 hover:text-gray-900 transition">
+          Portfolio
+          <span class="absolute left-1/2 -bottom-1 h-[2px] w-0 bg-amber-500 group-hover:w-full transition-all"></span>
+        </a>
+        <a href="#services" class="relative group text-gray-600 hover:text-gray-900 transition">
+          Services
+          <span class="absolute left-1/2 -bottom-1 h-[2px] w-0 bg-amber-500 group-hover:w-full transition-all"></span>
+        </a>
+        <a href="#insights" class="relative group text-gray-600 hover:text-gray-900 transition">
+          Insights
+          <span class="absolute left-1/2 -bottom-1 h-[2px] w-0 bg-amber-500 group-hover:w-full transition-all"></span>
+        </a>
+        <a href="#contact" class="relative group text-gray-600 hover:text-gray-900 transition">
+          Contact
+          <span class="absolute left-1/2 -bottom-1 h-[2px] w-0 bg-amber-500 group-hover:w-full transition-all"></span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- MAIN -->
+  <main class="container mx-auto px-6 py-12 space-y-24">
+
+    <!-- HERO -->
+    <section id="hero" class="text-center py-16 md:py-24">
+      <div class="mx-auto mb-6 h-32 w-32 overflow-hidden rounded-full shadow-lg md:h-40 md:w-40">
+        <img src="https://placehold.co/160x160/D97706/FFFFFF?text=YO" alt="Profile" class="h-full w-full object-cover transition-transform hover:scale-105"/>
+      </div>
+      <h2 class="mb-4 text-4xl font-bold leading-tight text-gray-900 md:text-5xl">
+        Your Name: Crafting Impactful Digital Futures.
+      </h2>
+      <p class="mx-auto mb-8 max-w-3xl text-lg text-gray-600 md:text-xl">
+        Leveraging AI, UI/UX & strategic branding to build authentic, future-ready digital identities.
+      </p>
+      <div class="flex justify-center gap-4">
+        <a href="#portfolio" class="rounded-lg bg-amber-600 px-8 py-3 text-white font-semibold shadow-lg transition hover:bg-amber-700">
+          Explore Portfolio
+        </a>
+        <a href="#contact" class="rounded-lg border border-gray-300 px-8 py-3 text-gray-800 font-semibold transition hover:bg-gray-100">
+          Connect With Me
+        </a>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="space-y-8">
+      <div class="text-center">
+        <h3 class="text-3xl font-bold text-gray-900">About Me: The Human OS</h3>
+        <p class="mt-2 text-lg text-gray-600">My journey, values & skills – laid bare.</p>
+      </div>
+      <div class="grid gap-8 md:grid-cols-3">
+        <div class="bg-white border border-gray-200 p-8 rounded-lg shadow-sm hover:shadow-lg transition transform hover:-translate-y-1">
+          <h4 class="mb-4 text-2xl font-bold text-gray-900">My Story</h4>
+          <p class="text-gray-600">From Lamahatta origins to Dell Case Manager to AI innovator—I build bridges between chaos and clarity through code and consciousness.</p>
+        </div>
+        <div class="bg-white border border-gray-200 p-8 rounded-lg shadow-sm hover:shadow-lg transition transform hover:-translate-y-1">
+          <h4 class="mb-4 text-2xl font-bold text-gray-900">My Values</h4>
+          <ul class="list-disc list-inside space-y-2 text-gray-600">
+            <li>Authenticity & Transparency</li>
+            <li>Innovation & Learning</li>
+            <li>User-Centric Design</li>
+            <li>Empowerment Through Tech</li>
+            <li>Ethical AI</li>
+          </ul>
+        </div>
+        <div class="bg-white border border-gray-200 p-8 rounded-lg shadow-sm hover:shadow-lg transition transform hover:-translate-y-1">
+          <h4 class="mb-4 text-2xl font-bold text-gray-900">My Skills</h4>
+          <ul class="list-disc list-inside space-y-2 text-gray-600">
+            <li>HTML, CSS, JS, Tailwind</li>
+            <li>UI/UX & IA</li>
+            <li>Data Analysis</li>
+            <li>Personal Branding</li>
+            <li>AI Strategy & Tools</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio" class="space-y-8">
+      <div class="text-center">
+        <h3 class="text-3xl font-bold text-gray-900">Portfolio: What I’m Building</h3>
+        <p class="mt-2 text-lg text-gray-600">Real projects, real stories—no fluff.</p>
+      </div>
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <!-- Example Card -->
+        <div class="bg-white border border-gray-200 p-8 rounded-lg shadow-sm hover:shadow-lg transition transform hover:-translate-y-1">
+          <h4 class="mb-2 text-2xl font-bold text-gray-900">🗂️ AI File Whisperer</h4>
+          <p class="text-gray-600">Chat with your local files via OpenAI Agents SDK—because manual searches are prehistoric.</p>
+        </div>
+        <!-- Repeat other project cards here -->
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="space-y-8">
+      <div class="text-center">
+        <h3 class="text-3xl font-bold text-gray-900">Services: Execution Engine</h3>
+        <p class="mt-2 text-lg text-gray-600">From bespoke websites to AI-powered workflows.</p>
+      </div>
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div class="flex flex-col items-center bg-white border border-gray-200 p-8 rounded-lg shadow-sm hover:shadow-lg transition transform hover:-translate-y-1 text-center">
+          <span class="mb-4 text-5xl">🌐</span>
+          <h4 class="mb-2 text-2xl font-bold text-gray-900">Brand Websites</h4>
+          <p class="text-gray-600">Bespoke, SEO-ready sites that funnel authority and trust.</p>
+        </div>
+        <!-- Repeat service cards -->
+      </div>
+    </section>
+
+    <!-- INSIGHTS -->
+    <section id="insights" class="space-y-8">
+      <div class="text-center">
+        <h3 class="text-3xl font-bold text-gray-900">Insights & Thought Leadership</h3>
+        <p class="mt-2 text-lg text-gray-600">Lessons from the frontier of AI & authenticity.</p>
+      </div>
+      <div class="grid gap-8 md:grid-cols-2">
+        <div class="bg-white border border-gray-200 p-8 rounded-lg shadow-sm hover:shadow-lg transition transform hover:-translate-y-1">
+          <h4 class="mb-2 text-xl font-bold text-gray-900">The Authenticity Premium in AI</h4>
+          <p class="mb-4 text-gray-600 text-sm">Jun 10, 2025</p>
+          <p class="mb-4 text-gray-600">Why genuine human connection outperforms algorithmic noise in an AI-driven world.</p>
+          <a href="#" class="text-amber-600 hover:underline">Read More →</a>
+        </div>
+        <!-- Repeat insight cards -->
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="space-y-8">
+      <div class="text-center">
+        <h3 class="text-3xl font-bold text-gray-900">Let’s Connect</h3>
+        <p class="mt-2 text-lg text-gray-600">Ready to evolve your digital identity? Reach out.</p>
+      </div>
+      <div class="mx-auto max-w-2xl bg-white border border-gray-200 p-8 rounded-lg shadow-sm hover:shadow-lg transition transform hover:-translate-y-1">
+        <form class="space-y-6">
+          <input type="text" placeholder="Your Name" class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-amber-500 focus:outline-none"/>
+          <input type="email" placeholder="Your Email" class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-amber-500 focus:outline-none"/>
+          <textarea rows="5" placeholder="Your Message" class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-amber-500 focus:outline-none resize-y"></textarea>
+          <button type="submit" class="w-full rounded-lg bg-amber-600 py-3 font-semibold text-white hover:bg-amber-700 transition shadow-md">Send Message</button>
+        </form>
+        <p class="mt-8 text-center text-gray-600">Or find me on</p>
+        <div class="mt-4 flex justify-center gap-6 text-2xl">
+          <!-- SVG icons or font icons here -->
+          <a href="#" class="text-gray-600 hover:text-amber-600 transition">&#xf08c;</a>
+          <a href="#" class="text-gray-600 hover:text-amber-600 transition">&#xf099;</a>
+          <a href="#" class="text-gray-600 hover:text-amber-600 transition">&#xf16d;</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-800 text-white">
+    <div class="container mx-auto px-6 py-8 text-center">
+      <p>&copy; 2025 Your Name. All rights reserved.</p>
+      <p class="mt-2 text-sm text-gray-400">Building future-ready digital identities.</p>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // AI Vision Tab Data (if re-adding that section)
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('nav a');
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            navLinks.forEach(link => link.classList.toggle(
+              'text-amber-600',
+              link.getAttribute('href') === '#' + e.target.id
+            ));
+          }
+        });
+      }, { threshold: 0.4 });
+      sections.forEach(sec => observer.observe(sec));
+    });
+  </script>
+</body>
+</html>

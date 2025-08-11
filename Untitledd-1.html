@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Neural Spine Motion</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+    <style>
+      body {
+        margin: 0;
+        background: black;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      let t = 0;
+      function setup() {
+        createCanvas(windowWidth, windowHeight);
+        stroke(255);
+        strokeWeight(1.2);
+        noFill();
+      }
+
+      function draw() {
+        background(0, 20); // Motion trail
+        translate(width / 2, height / 2);
+
+        beginShape();
+        for (let i = 0; i < 200; i++) {
+          let angle = sin(t + i * 0.05) * PI;
+          let r = i * 0.5 + sin(t + i * 0.1) * 20;
+          let x = r * cos(angle);
+          let y = r * sin(angle);
+          vertex(x, y);
+
+          // Arms/nerve-like extensions
+          let armX = x + sin(t * 2 + i) * 15;
+          let armY = y + cos(t * 2 + i) * 15;
+          line(x, y, armX, armY);
+        }
+        endShape();
+
+        t += 0.02;
+      }
+    </script>
+  </body>
+</html>

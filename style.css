@@ -1,0 +1,78 @@
+/* Keep filename lowercase: style.css */
+/* Visual proof of CSS load: .probe turns green */
+:root {
+  --bg: #0b0e13;
+  --fg: #e8eef7;
+  --muted: #93a3b8;
+  --brand: #65d1ff;
+  --ok: #4ade80;
+  --border: #1b2230;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji';
+  background: radial-gradient(1200px 600px at 20% -20%, rgba(101, 209, 255, 0.15), transparent 60%),
+              radial-gradient(1000px 500px at 120% -10%, rgba(101, 209, 255, 0.08), transparent 60%),
+              var(--bg);
+  color: var(--fg);
+}
+
+.site-header, .site-footer {
+  border-bottom: 1px solid var(--border);
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.site-footer { border-top: 1px solid var(--border); border-bottom: none; margin-top: 40px; }
+
+.nav a {
+  color: var(--muted);
+  text-decoration: none;
+  margin-left: 16px;
+}
+.nav a:hover { color: var(--fg); }
+
+.container { max-width: 960px; margin: 40px auto; padding: 0 20px; }
+
+.hero {
+  padding: 28px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(255,255,255,0.02);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+.tag { color: var(--muted); }
+
+button#cta {
+  margin-top: 12px;
+  padding: 10px 16px;
+  background: var(--brand);
+  border: none;
+  border-radius: 10px;
+  color: #03202f;
+  font-weight: 700;
+  cursor: pointer;
+}
+button#cta:hover { filter: brightness(1.05); }
+
+.status {
+  margin-top: 14px;
+  padding: 8px 12px;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  color: var(--muted);
+}
+.probe {
+  color: #ff657a;
+  background: rgba(255,101,122,0.08);
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+/* Proof the CSS applied: this rule turns .probe green */
+body .probe { color: var(--ok); background: rgba(74,222,128,0.08); }

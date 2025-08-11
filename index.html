@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI for Students — Secure Starter</title>
+
+  <!-- CSS: cache-busted; keep filename lowercase; path relative to index.html -->
+  <link rel="stylesheet" href="./style.css?v=1" />
+
+  <!-- CSP: safe-by-default for static sites (relax later as needed) -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self';
+                 img-src 'self' data: https:;
+                 style-src 'self' 'unsafe-inline';
+                 script-src 'self';
+                 connect-src 'self';
+                 frame-ancestors 'none';
+                 base-uri 'self';
+                 upgrade-insecure-requests;">
+</head>
+<body>
+  <header class="site-header">
+    <h1>AI for Students</h1>
+    <nav class="nav">
+      <a href="#" target="_blank" rel="noopener noreferrer">Docs</a>
+      <a href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h2 id="hero-title">Ship it. Learn faster.</h2>
+      <p class="tag">This page proves CSS & JS are loading correctly.</p>
+      <button id="cta">Run JS Test</button>
+      <div id="status" class="status">Status: waiting…</div>
+    </section>
+
+    <section>
+      <h3>Debug Info</h3>
+      <ul>
+        <li>CSS load probe: <span id="css-probe" class="probe">not applied</span></li>
+        <li>JS load probe: check DevTools console for <code>script.js loaded OK</code></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">© 2025 AI for Students</footer>
+
+  <!-- Inline guard for quick diagnostics -->
+  <script>
+    window.addEventListener('error', (e) => {
+      console.error('Runtime error:', e.message);
+    });
+  </script>
+
+  <!-- JS: defer so it runs after DOM parse; cache-busted -->
+  <script src="./script.js?v=1" defer
+          onload="console.log('script.js loaded OK')"
+          onerror="console.error('script.js FAILED')"></script>
+</body>
+</html>
