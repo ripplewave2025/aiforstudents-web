@@ -1,78 +1,103 @@
-/* Keep filename lowercase: style.css */
-/* Visual proof of CSS load: .probe turns green */
-:root {
-  --bg: #0b0e13;
-  --fg: #e8eef7;
-  --muted: #93a3b8;
-  --brand: #65d1ff;
-  --ok: #4ade80;
-  --border: #1b2230;
+:root{
+  --bg:#0b0f14; --bg-2:#0f1520; --card:#0c1220aa; --card-2:#0b1222;
+  --fg:#e5e7eb; --muted:#a3b1c6; --accent:#22d3ee; --accent-2:#7c3aed;
+  --border:rgba(140,160,190,.25); --shadow:0 8px 30px rgba(0,0,0,.35);
+  --radius:16px; --radius-sm:12px; --max:1100px;
 }
 
-* { box-sizing: border-box; }
-html, body { height: 100%; }
-body {
-  margin: 0;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji';
-  background: radial-gradient(1200px 600px at 20% -20%, rgba(101, 209, 255, 0.15), transparent 60%),
-              radial-gradient(1000px 500px at 120% -10%, rgba(101, 209, 255, 0.08), transparent 60%),
-              var(--bg);
-  color: var(--fg);
+@media (prefers-color-scheme: light){
+  :root{ --bg:#f8fafc; --bg-2:#f2f5fb; --card:#ffffffcc; --card-2:#fff;
+    --fg:#0a0a0a; --muted:#4b5563; --border:rgba(20,24,36,.1); }
+}
+*{box-sizing:border-box} html,body{height:100%}
+body{
+  margin:0; font:16px/1.5 ui-sans-serif,system-ui,Segoe UI,Inter,Arial;
+  color:var(--fg); background:
+    radial-gradient(1200px 800px at 70% -10%, #1a2240 0%, transparent 60%),
+    radial-gradient(800px 600px at 90% 20%, #2a1440 0%, transparent 70%),
+    linear-gradient(180deg, var(--bg), var(--bg-2));
 }
 
-.site-header, .site-footer {
-  border-bottom: 1px solid var(--border);
-  padding: 14px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+/* Layout helpers */
+.container{max-width:var(--max); margin:0 auto; padding:24px}
+.row{display:flex; gap:16px}
+.between{justify-content:space-between}.center{align-items:center}
+.wrap{flex-wrap:wrap}.gap{gap:12px}.push-right{margin-left:auto}
+.muted{color:var(--muted)} .small{font-size:14px}
+
+/* Header */
+.site-header{position:sticky; top:0; backdrop-filter:blur(8px);
+  background:linear-gradient(180deg, rgba(7,10,16,.8), rgba(7,10,16,.3));
+  border-bottom:1px solid var(--border); z-index:100}
+.brand{display:inline-flex; align-items:center; gap:10px;
+  color:var(--fg); text-decoration:none; font-weight:700; letter-spacing:.25px}
+.logo-dot{width:12px; height:12px; border-radius:50%;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  box-shadow:0 0 16px var(--accent)}
+.nav .nav-link{color:var(--muted); text-decoration:none; padding:10px 12px; border-radius:10px}
+.nav .nav-link:hover{background-color:rgba(255,255,255,.06); color:var(--fg)}
+
+/* Hero */
+.hero{padding:64px 0 28px}
+.hero h1{font-size:48px; line-height:1.1; margin:0 0 10px}
+.accent{background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  -webkit-background-clip:text; background-clip:text; color:transparent}
+.lead{max-width:760px; color:var(--muted); margin:0 0 18px}
+
+/* Buttons */
+.btn{border:1px solid var(--border); background:var(--card-2);
+  color:var(--fg); padding:10px 14px; border-radius:12px; cursor:pointer}
+.btn:hover{transform:translateY(-1px)}
+.btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  border-color:transparent; color:#061018; font-weight:700}
+.btn.ghost{background:transparent}
+.btn.small{padding:6px 10px; font-size:14px}
+
+/* Utility bar */
+.utility{position:sticky; top:64px; z-index:90; border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border); background:rgba(8,12,20,.6); backdrop-filter:blur(8px)}
+.search-wrap{position:relative; flex:1; min-width:260px}
+.search-wrap input{width:100%; padding:12px 44px 12px 14px; border-radius:12px;
+  border:1px solid var(--border); background:var(--card-2); color:var(--fg)}
+.hint{position:absolute; right:10px; top:50%; transform:translateY(-50%);
+  padding:2px 6px; border:1px solid var(--border); border-radius:6px; font-size:12px; color:var(--muted)}
+.tag-bar{display:flex; gap:8px; flex-wrap:wrap}
+.tag{padding:8px 12px; border:1px solid var(--border); border-radius:999px;
+  background:var(--card); color:var(--muted); cursor:pointer; user-select:none}
+.tag.active{background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:#061018; border-color:transparent}
+
+/* Sections */
+.section-head{margin:26px 0 10px}
+.section-title{margin:0; font-size:24px}
+.pinned.hidden{display:none}
+
+/* Card grid */
+.grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:16px}
+.card{
+  position:relative; display:flex; flex-direction:column; gap:10px;
+  padding:16px; border:1px solid var(--border); border-radius:var(--radius);
+  background:radial-gradient(120% 100% at 0% 0%, rgba(255,255,255,.06), transparent 60%), var(--card);
+  box-shadow:var(--shadow);
 }
-.site-footer { border-top: 1px solid var(--border); border-bottom: none; margin-top: 40px; }
+.card h3{margin:0}
+.card p{margin:0; color:var(--muted)}
+.badges{display:flex; gap:8px; flex-wrap:wrap}
+.badge{font-size:12px; padding:4px 8px; border:1px solid var(--border); border-radius:999px; color:var(--muted)}
+.card .actions{display:flex; gap:10px; margin-top:auto}
+.star{position:absolute; top:10px; right:10px; cursor:pointer; font-size:18px; opacity:.9}
 
-.nav a {
-  color: var(--muted);
-  text-decoration: none;
-  margin-left: 16px;
-}
-.nav a:hover { color: var(--fg); }
+/* Modal */
+dialog::backdrop{background:rgba(0,0,0,.6)}
+dialog{border:none; padding:0; background:none}
+.modal-card{max-width:560px; margin:auto; background:var(--card-2); border:1px solid var(--border);
+  border-radius:16px; padding:20px; color:var(--fg); box-shadow:var(--shadow)}
 
-.container { max-width: 960px; margin: 40px auto; padding: 0 20px; }
+/* Learn */
+.steps{max-width:900px}
+.steps li{margin:8px 0}
 
-.hero {
-  padding: 28px;
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  background: rgba(255,255,255,0.02);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-}
+/* Footer */
+.site-footer{border-top:1px solid var(--border); margin-top:40px; padding:18px 0}
 
-.tag { color: var(--muted); }
-
-button#cta {
-  margin-top: 12px;
-  padding: 10px 16px;
-  background: var(--brand);
-  border: none;
-  border-radius: 10px;
-  color: #03202f;
-  font-weight: 700;
-  cursor: pointer;
-}
-button#cta:hover { filter: brightness(1.05); }
-
-.status {
-  margin-top: 14px;
-  padding: 8px 12px;
-  border: 1px dashed var(--border);
-  border-radius: 8px;
-  color: var(--muted);
-}
-.probe {
-  color: #ff657a;
-  background: rgba(255,101,122,0.08);
-  padding: 2px 8px;
-  border-radius: 6px;
-}
-
-/* Proof the CSS applied: this rule turns .probe green */
-body .probe { color: var(--ok); background: rgba(74,222,128,0.08); }
+/* Responsive tweaks */
+@media (max-width:720px){ .hero h1{font-size:34px} .utility{top:56px} }
