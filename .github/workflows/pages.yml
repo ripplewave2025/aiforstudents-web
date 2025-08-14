@@ -1,4 +1,4 @@
-﻿name: Deploy static site to Pages
+name: Deploy static site to Pages
 on:
   push: { branches: [main] }
   workflow_dispatch:
@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/upload-pages-artifact@v3
-        with: { path: "." }
+        with: { path: "./public" }
   deploy:
     needs: build
     runs-on: ubuntu-latest
